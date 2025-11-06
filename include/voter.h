@@ -3,12 +3,12 @@
 
 typedef struct {
     int voterID;
-    char name[50];
-    char gender[10];
+    char *name;
+    char *gender;
     int age;
     int hasVoted;
 } Voter;
-void registerVoter();
+void registerVoter(int id, const char* name, const char* gender, int age);
 void displayVoters();
 
 #endif
