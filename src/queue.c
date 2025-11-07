@@ -28,6 +28,13 @@ void enqueue(Queue* q,Voter* val)
     {
         Node* temp=createNode(val);
         q->rear->next=temp;
-        q=q->rear;
+        q->rear=q->rear->next;
     }
+}
+
+Node* dequeue(Queue* q)
+{
+    Node* temp=q->front;
+    q->front=q->front->next;
+    free(temp);
 }
