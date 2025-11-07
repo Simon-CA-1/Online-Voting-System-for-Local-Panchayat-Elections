@@ -38,3 +38,12 @@ Node* dequeue(Queue* q)
     q->front=q->front->next;
     free(temp);
 }
+
+bool isEmpty(Queue* q)
+{
+    if(q->front==q->rear)
+    {
+        return true;
+    }
+    return false;
+}

@@ -1,6 +1,7 @@
 #ifndef QUEUE_H
 #define QUEUE_
 #include "../include/voter.h"
+#include <stdbool.h>
 typedef struct Node 
 {
     Voter* data;
@@ -16,7 +17,7 @@ Queue* createQueue();
 Node* createNode();
 void enqueue(Queue* q, Voter* value);
 Node* dequeue(Queue* q);
-int isEmpty(Queue* q);
+bool isEmpty(Queue* q);
 void freeQueue(Queue* q);
 
 #endif
