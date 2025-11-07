@@ -47,3 +47,14 @@ bool isEmpty(Queue* q)
     }
     return false;
 }
+
+void freeQueue(Queue* q)
+{
+    Node* temp;
+    while(q->front!=q->rear)
+    {
+        temp=q->front;
+        q->front=q->front->next;
+        free(temp);
+    }
+}
