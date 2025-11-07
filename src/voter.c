@@ -2,8 +2,9 @@
 #include "../include/queue.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
-void registerVoter(int id,const char* name,const char* gender,int age,Queue voterQueue)
+void registerVoter(int id,const char* name,const char* gender,int age,Queue *voterQueue)
 {
     Voter* newNode=(Voter*)malloc(sizeof(Voter));
     newNode->age=age;
@@ -13,17 +14,17 @@ void registerVoter(int id,const char* name,const char* gender,int age,Queue vote
     strcpy(newNode->name,name);
     newNode->gender=(char*)malloc(strlen(gender)+1);
     strcpy(newNode->gender,gender);
-    enqueue(&voterQueue,newNode);
+    enqueue(voterQueue,newNode);
 }
 
-void displayVoters(Queue voterQueue)
+void displayVoters(Queue *voterQueue)
 {
-    if(isEmpty(&voterQueue))
+    if(isEmpty(voterQueue))
     {
         printf("No voters registered yet.\n");
         return;
     }
-    Node* temp=voterQueue.front;
+    Node* temp=voterQueue->front;
     printf("Registered Voters:\n");
     while(temp!=NULL)
     {
