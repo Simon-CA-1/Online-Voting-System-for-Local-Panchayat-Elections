@@ -3,7 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void registerVoter(int id,const char* name,const char* gender,int age)
+void registerVoter(int id,const char* name,const char* gender,int age,Queue voterQueue)
 {
     Voter* newNode=(Voter*)malloc(sizeof(Voter));
     newNode->age=age;

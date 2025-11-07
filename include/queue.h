@@ -1,5 +1,5 @@
-#ifdef QUEUE_H
-#define QUEUE_H
+#ifndef QUEUE_H
+#define QUEUE_
 #include "../include/voter.h"
 typedef struct Node 
 {
