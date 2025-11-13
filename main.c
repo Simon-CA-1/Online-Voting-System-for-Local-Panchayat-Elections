@@ -70,6 +70,7 @@ int main()
                 insert(candidateTree, newCandidate);
                 break;
             case 3:
+                clearscreen();
                 printf("Voting started...\n");
                 Node* temp=voterQueue->front;
                 while(temp!=NULL)
@@ -95,7 +96,9 @@ int main()
                 }
                 break;
             case 4:
-                continue;
+                clearscreen();
+                printf("Election Results:\n");
+                displayCandidates(candidateTree);
                 break;
             case 5:
                 continue;
