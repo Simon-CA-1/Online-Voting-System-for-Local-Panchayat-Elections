@@ -23,14 +23,18 @@ void registerCandidate(int id,const char* name,const char* party,TreeNode* candi
     insert(candidateTree,newCandidate);
 }
 
-void displayCandidates(TreeNode* root)
+TreeNode* displayCandidates(TreeNode* max,TreeNode* root)
 {
-    if(root==NULL) return;
-    displayCandidates(root->left);
+    if(root==NULL) return max;
+    if(max==NULL) max=root;
+    max=displayCandidates(max,root->left);
+    if(root->data->voteCount>max->data->voteCount) max=root;
     printf("ID: %d, Name: %s, Party: %s, Votes: %d\n",
            root->data->candidateID,
            root->data->name,
            root->data->party,
            root->data->voteCount);
-    displayCandidates(root->right);
+    max=displayCandidates(max,root->right);
+    return max;
 }
+

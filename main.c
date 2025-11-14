@@ -19,8 +19,8 @@ int main()
         printf("----------------------------------------------\n");
         printf("|Online Voting System for Panchayat Elections|\n");
         printf("----------------------------------------------\n");
-        printf("|       Press 1 for adding new voter         |\n");
-        printf("|       Press 2 for adding new candidate     |\n");
+        printf("|       Press 1 to add new voter             |\n");
+        printf("|       Press 2 to add new candidate         |\n");
         printf("|       Press 3 to start voting              |\n");
         printf("|       Press 4 to display results           |\n");
         printf("|       Press 5 to exit                      |\n");
@@ -84,7 +84,19 @@ int main()
                 break;
             case 4:
                 printf("Election Results:\n");
-                displayCandidates(candidateTree);
+                TreeNode* winner=displayCandidates(NULL, candidateTree);
+                if(winner!=NULL)
+                {
+                    printf("Winner is %s from %s with %d votes.\n",
+                           winner->data->name,
+                           winner->data->party,
+                           winner->data->voteCount);
+                }
+                else
+                {
+                    printf("No candidates available.\n");
+                }
+                printf("Press Enter to continue...");
                 getchar();
                 getchar();
                 break;
