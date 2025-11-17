@@ -23,7 +23,8 @@ int main()
         printf("|       Press 2 to add new candidate         |\n");
         printf("|       Press 3 to start voting              |\n");
         printf("|       Press 4 to display results           |\n");
-        printf("|       Press 5 to exit                      |\n");
+        printf("|       Press 5 to see age demographics      |\n");
+        printf("|       Press 6 to exit                      |\n");
         printf("----------------------------------------------\n");
         scanf("%d",&choice);
         switch(choice)
@@ -100,7 +101,71 @@ int main()
                 getchar();
                 getchar();
                 break;
-            case 5:
+                case 5:
+                printf("Age Demographics:\n");
+
+                int total18_25 = 0, voted18_25 = 0;
+                int total25_40 = 0, voted25_40 = 0;
+                int total40plus = 0, voted40plus = 0;
+
+                Node* curr = voterQueue->front;
+
+                while(curr != NULL)
+                {
+                    int age = curr->data->age;
+                    int voted = curr->data->hasVoted;
+
+                    if(age >= 18 && age <= 25)
+                    {
+                        total18_25++;
+                        if(voted) voted18_25++;
+                    }
+                    else if(age > 25 && age <= 40)
+                    {
+                        total25_40++;
+                        if(voted) voted25_40++;
+                    }
+                    else if(age > 40)
+                    {
+                        total40plus++;
+                        if(voted) voted40plus++;
+                    }
+
+                    curr = curr->next;
+                }
+
+                printf("\n18 - 25:\n");
+                printf("Total voters: %d\n", total18_25);
+                if(total18_25 > 0)
+                    printf("Voted: %d (%.2f%%)\n",
+                           voted18_25,
+                           (voted18_25 * 100.0) / total18_25);
+                else
+                    printf("No voters in this group.\n");
+
+                printf("\n25 - 40:\n");
+                printf("Total voters: %d\n", total25_40);
+                if(total25_40 > 0)
+                    printf("Voted: %d (%.2f%%)\n",
+                           voted25_40,
+                           (voted25_40 * 100.0) / total25_40);
+                else
+                    printf("No voters in this group.\n");
+
+                printf("\nAbove 40:\n");
+                printf("Total voters: %d\n", total40plus);
+                if(total40plus > 0)
+                    printf("Voted: %d (%.2f%%)\n",
+                           voted40plus,
+                           (voted40plus * 100.0) / total40plus);
+                else
+                    printf("No voters in this group.\n");
+
+                printf("\nPress Enter to continue...");
+                getchar();
+                getchar();
+                break;
+            case 6:
                 continue;
                 break;
             default:
