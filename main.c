@@ -39,6 +39,14 @@ int main()
                 printf("Enter Voter Age: ");
                 int age;
                 scanf("%d", &age);
+                if(age<18)
+                {
+                    printf("Voter must be at least 18 years old to register.\n");
+                    printf("Press Enter to continue...");
+                    getchar();
+                    getchar();
+                    break;
+                }
                 printf("Enter Voter Gender: ");
                 char gender[10];
                 scanf("%s", gender);
@@ -171,7 +179,7 @@ int main()
             default:
                 printf("Invalid Choice\n");
         }
-    } while (choice!=5);
+    } while (choice!=6);
     freeQueue(voterQueue);
     freeTree(candidateTree);
     return 0;
